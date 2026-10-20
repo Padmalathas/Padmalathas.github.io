@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Padmalatha Somashiandan — HPC & AI Infrastructure Content</title>
+<meta name="description" content="Padmalatha (Latha) Somashiandan — Senior Content Developer, Azure HPC & AI Infrastructure at Microsoft. Turning complex high-performance computing into clarity that scales.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light dark;
+    --bg:#EDF0F6; --surface:#FFFFFF; --surface-2:#F5F7FC;
+    --ink:#0E1626; --ink-soft:#394357; --muted:#69748A;
+    --line:#DAE0EB; --line-strong:#C6CEDC;
+    --accent:#4B46E5; --accent-ink:#3732C9; --accent-soft:rgba(75,70,229,.09);
+    --signal:#D9623A;
+    --maxw:1140px;
+    --fdisplay:"Space Grotesk",system-ui,sans-serif;
+    --fbody:"IBM Plex Sans",system-ui,sans-serif;
+    --fmono:"IBM Plex Mono",ui-monospace,monospace;
+    --r:14px; --r-sm:10px;
+    --shadow:0 1px 2px rgba(14,22,38,.04), 0 12px 30px -18px rgba(14,22,38,.30);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#090E18; --surface:#111A2A; --surface-2:#0D1522;
+      --ink:#EAEEF6; --ink-soft:#BAC4D4; --muted:#818EA3;
+      --line:#1C2838; --line-strong:#2A3850;
+      --accent:#8785FF; --accent-ink:#A5A3FF; --accent-soft:rgba(135,133,255,.13);
+      --signal:#F08A60;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 18px 40px -22px rgba(0,0,0,.65);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#090E18; --surface:#111A2A; --surface-2:#0D1522;
+    --ink:#EAEEF6; --ink-soft:#BAC4D4; --muted:#818EA3;
+    --line:#1C2838; --line-strong:#2A3850;
+    --accent:#8785FF; --accent-ink:#A5A3FF; --accent-soft:rgba(135,133,255,.13);
+    --signal:#F08A60;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 18px 40px -22px rgba(0,0,0,.65);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:calc(72px + env(safe-area-inset-top,0px)); -webkit-text-size-adjust:100%}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--fbody); font-size:1.0625rem; line-height:1.62;
+    font-feature-settings:"ss01","cv05"; -webkit-font-smoothing:antialiased;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); background:var(--surface); z-index:60}
+  a{color:inherit; text-decoration:none}
+  .wrap{max-width:var(--maxw); margin-inline:auto; padding-inline:clamp(20px,5vw,48px)}
+  h1,h2,h3{font-family:var(--fdisplay); font-weight:600; letter-spacing:-.02em; line-height:1.05; margin:0}
+  p{margin:0}
+
+  /* NAV */
+  header.nav{position:sticky; top:env(safe-area-inset-top,0px); z-index:50; background:color-mix(in srgb, var(--surface) 86%, transparent); backdrop-filter:saturate(1.2) blur(10px); border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; height:72px; gap:16px}
+  .brand{display:flex; align-items:center; gap:12px; font-family:var(--fdisplay); font-weight:600; letter-spacing:-.01em}
+  .mono{width:38px; height:38px; border-radius:10px; display:grid; place-items:center; background:var(--ink); color:var(--bg); font-family:var(--fdisplay); font-weight:600; font-size:.95rem; letter-spacing:.02em; flex:none}
+  .brand .bt{display:flex; flex-direction:column; line-height:1.18}
+  .brand b{font-weight:600; font-size:1.0rem}
+  .brand .bt i{font-style:normal; font-family:var(--fbody); font-weight:400; font-size:.72rem; color:var(--muted); letter-spacing:0}
+  @media(max-width:520px){ .brand .bt{display:none} }
+  nav.links{display:flex; align-items:center; gap:28px}
+  nav.links a{font-size:.92rem; color:var(--ink-soft); font-weight:500; transition:color .15s}
+  nav.links a:hover{color:var(--accent-ink)}
+  .theme-btn{width:38px; height:38px; border-radius:10px; border:1px solid var(--line-strong); background:var(--surface); color:var(--ink-soft); cursor:pointer; display:grid; place-items:center; flex:none}
+  .theme-btn:hover{border-color:var(--accent); color:var(--accent-ink)}
+  .theme-btn svg{width:18px;height:18px}
+  .nav-cta{display:none}
+  @media(max-width:760px){ nav.links a:not(.nav-cta){display:none} }
+
+  /* HERO */
+  .hero{position:relative; overflow:hidden; border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center; padding-block:clamp(56px,9vw,104px)}
+  @media(max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:36px} }
+  .kicker{font-family:var(--fmono); font-size:.8rem; color:var(--accent-ink); letter-spacing:.01em; margin-bottom:22px; display:flex; align-items:center; gap:10px}
+  .kicker .dot{width:7px; height:7px; border-radius:50%; background:var(--signal); box-shadow:0 0 0 4px color-mix(in srgb,var(--signal) 22%,transparent)}
+  .hero h1{font-size:clamp(2.3rem,5.1vw,4rem); font-weight:600; max-width:15ch}
+  .hero h1 em{font-style:normal; color:var(--accent-ink)}
+  .hero .lede{margin-top:24px; font-size:clamp(1.05rem,1.6vw,1.22rem); color:var(--ink-soft); max-width:46ch; line-height:1.55}
+  .cta-row{margin-top:34px; display:flex; flex-wrap:wrap; gap:14px}
+  .btn{font-family:var(--fbody); font-weight:500; font-size:.98rem; padding:13px 22px; border-radius:var(--r-sm); border:1px solid transparent; cursor:pointer; transition:transform .12s ease, background .15s, border-color .15s; display:inline-flex; align-items:center; gap:9px}
+  .btn-primary{background:var(--accent); color:#fff}
+  .btn-primary:hover{background:var(--accent-ink)}
+  .btn-ghost{background:transparent; border-color:var(--line-strong); color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent-ink)}
+  @media(hover:hover){ .btn:active{transform:translateY(1px)} }
+  .signals{margin-top:46px; padding-top:26px; border-top:1px solid var(--line)}
+  .signals .lbl{font-size:.78rem; color:var(--muted); margin-bottom:12px}
+  .signals .row{display:flex; flex-wrap:wrap; gap:10px 26px; align-items:center}
+  .signals .row span{font-family:var(--fdisplay); font-weight:500; font-size:.98rem; color:var(--ink-soft); opacity:.9}
+
+  /* fabric schematic */
+  .fabric{position:relative; aspect-ratio:1/1; max-width:420px; margin-inline:auto; width:100%}
+  @media(max-width:900px){ .fabric{max-width:340px; order:-1} }
+  .fabric svg{width:100%; height:auto; display:block}
+  .fabric .node{fill:var(--surface); stroke:var(--line-strong); stroke-width:1.4}
+  .fabric .node.core{fill:var(--accent); stroke:var(--accent)}
+  .fabric .node.leaf{stroke:var(--accent); }
+  .fabric .link{stroke:var(--line-strong); stroke-width:1; opacity:.7}
+  .fabric .link.hot{stroke:var(--accent); opacity:.55}
+  .fabric .tierlbl{fill:var(--muted); font-family:var(--fmono); font-size:9px; letter-spacing:.02em}
+  .fabric .pulse{fill:var(--signal)}
+
+  /* SECTIONS */
+  section{padding-block:clamp(60px,9vw,104px)}
+  .sec-head{max-width:62ch; margin-bottom:46px}
+  .sec-tag{font-family:var(--fmono); font-size:.78rem; color:var(--accent-ink); margin-bottom:16px}
+  .sec-head h2{font-size:clamp(1.65rem,3.1vw,2.35rem)}
+  .sec-head p{margin-top:16px; color:var(--ink-soft); font-size:1.08rem}
+
+  /* expertise */
+  .exp{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r); overflow:hidden}
+  @media(max-width:860px){ .exp{grid-template-columns:repeat(2,1fr)} }
+  @media(max-width:560px){ .exp{grid-template-columns:1fr} }
+  .exp article{background:var(--surface); padding:28px 26px 30px; position:relative; transition:background .18s}
+  .exp article:hover{background:var(--surface-2)}
+  .exp .idx{font-family:var(--fmono); font-size:.76rem; color:var(--accent-ink); margin-bottom:18px}
+  .exp h3{font-size:1.14rem; letter-spacing:-.01em; margin-bottom:10px}
+  .exp p{color:var(--ink-soft); font-size:.97rem; line-height:1.55}
+  .exp .stack{margin-top:16px; display:flex; flex-wrap:wrap; gap:7px}
+  .chip{font-family:var(--fmono); font-size:.72rem; color:var(--ink-soft); background:var(--surface-2); border:1px solid var(--line); border-radius:6px; padding:3px 8px}
+  .exp article:hover .chip{background:var(--surface)}
+
+  /* spotlight */
+  .spotlight{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); overflow:hidden; box-shadow:var(--shadow)}
+  .spot-grid{display:grid; grid-template-columns:1.1fr .9fr}
+  @media(max-width:840px){ .spot-grid{grid-template-columns:1fr} }
+  .spot-main{padding:clamp(28px,4vw,48px)}
+  .spot-flag{display:inline-flex; align-items:center; gap:8px; font-family:var(--fmono); font-size:.76rem; color:var(--signal); margin-bottom:20px}
+  .spot-flag::before{content:""; width:7px; height:7px; border-radius:2px; background:var(--signal)}
+  .spot-main h3{font-size:clamp(1.4rem,2.4vw,1.9rem); margin-bottom:16px; letter-spacing:-.015em}
+  .spot-main > p{color:var(--ink-soft); font-size:1.05rem; max-width:52ch}
+  .spot-points{margin:26px 0 0; padding:0; list-style:none; display:grid; gap:14px}
+  .spot-points li{display:flex; gap:13px; font-size:.98rem; color:var(--ink-soft)}
+  .spot-points svg{flex:none; width:19px; height:19px; margin-top:2px; color:var(--accent)}
+  .spot-side{background:var(--surface-2); border-left:1px solid var(--line); padding:clamp(28px,4vw,40px); display:flex; flex-direction:column; justify-content:center; gap:22px}
+  @media(max-width:840px){ .spot-side{border-left:0; border-top:1px solid var(--line)} }
+  .metric .n{font-family:var(--fdisplay); font-weight:600; font-size:2rem; letter-spacing:-.02em; color:var(--ink)}
+  .metric .k{font-size:.9rem; color:var(--muted); margin-top:2px}
+
+  /* impact metrics band */
+  .mgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r); overflow:hidden}
+  @media(max-width:720px){ .mgrid{grid-template-columns:repeat(2,1fr)} }
+  @media(max-width:440px){ .mgrid{grid-template-columns:1fr} }
+  .mcell{background:var(--surface); padding:30px 26px 28px}
+  .mcell .n{font-family:var(--fdisplay); font-weight:600; font-size:clamp(1.9rem,3vw,2.5rem); letter-spacing:-.02em; color:var(--ink); line-height:1}
+  .mcell .n b{color:var(--accent-ink); font-weight:600}
+  .mcell .k{margin-top:13px; font-size:.93rem; color:var(--ink-soft); line-height:1.45}
+  .mcell .src{margin-top:11px; font-family:var(--fmono); font-size:.71rem; color:var(--muted)}
+
+  /* availability pill */
+  .avail{display:inline-flex; align-items:center; gap:9px; font-family:var(--fmono); font-size:.8rem; color:var(--accent-ink); background:var(--accent-soft); border:1px solid color-mix(in srgb,var(--accent) 24%,transparent); border-radius:999px; padding:7px 15px 7px 13px; margin-bottom:24px}
+  .avail .d{width:8px; height:8px; border-radius:50%; background:var(--signal); box-shadow:0 0 0 4px color-mix(in srgb,var(--signal) 22%,transparent)}
+
+  /* work list */
+  .work{border-top:1px solid var(--line)}
+  .work a.row{display:grid; grid-template-columns:auto 1fr auto; gap:22px; align-items:baseline; padding:26px 4px; border-bottom:1px solid var(--line); transition:padding-left .18s, background .18s}
+  .work a.row:hover{padding-left:16px; background:linear-gradient(90deg,var(--accent-soft),transparent 60%)}
+  .work .wn{font-family:var(--fmono); font-size:.8rem; color:var(--muted)}
+  .work .wt{font-family:var(--fdisplay); font-weight:500; font-size:1.18rem; letter-spacing:-.01em}
+  .work .wt small{display:block; font-family:var(--fbody); font-weight:400; font-size:.96rem; color:var(--ink-soft); letter-spacing:0; margin-top:5px; max-width:60ch}
+  .work .wtag{font-family:var(--fmono); font-size:.74rem; color:var(--accent-ink); white-space:nowrap; align-self:center}
+  @media(max-width:620px){ .work a.row{grid-template-columns:auto 1fr; } .work .wtag{display:none} }
+
+  /* experience timeline */
+  .timeline{border-left:2px solid var(--line); margin-left:6px}
+  .tl{position:relative; display:grid; grid-template-columns:168px 1fr; gap:30px; padding:0 0 34px 32px}
+  .tl::before{content:""; position:absolute; left:-7px; top:5px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--accent)}
+  .tl:last-child{padding-bottom:0}
+  .tl-when{font-family:var(--fmono); font-size:.82rem; color:var(--muted); padding-top:3px}
+  .tl-what h3{font-size:1.1rem; letter-spacing:-.01em; margin-bottom:9px}
+  .tl-what p{color:var(--ink-soft); font-size:.96rem; line-height:1.55; max-width:64ch}
+  @media(max-width:640px){ .tl{grid-template-columns:1fr; gap:7px} .tl-when{order:-1} }
+  .eduline{margin-top:40px; padding-top:26px; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:10px 28px}
+  .eduline div{font-size:.93rem; color:var(--ink-soft)}
+  .eduline .k{font-family:var(--fmono); font-size:.72rem; color:var(--muted); display:block; margin-bottom:3px}
+
+  /* github */
+  .gh{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+  @media(max-width:760px){ .gh{grid-template-columns:1fr} }
+  .gh-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:30px 28px; display:flex; flex-direction:column; gap:14px}
+  .gh-card.lead{border-color:var(--line-strong)}
+  .gh-top{display:flex; align-items:center; gap:12px}
+  .gh-top svg{width:22px; height:22px; color:var(--ink)}
+  .gh-top .repo{font-family:var(--fmono); font-size:.92rem; color:var(--ink)}
+  .gh-card h3{font-size:1.16rem; letter-spacing:-.01em}
+  .gh-card p{color:var(--ink-soft); font-size:.97rem}
+  .gh-meta{margin-top:auto; padding-top:8px; display:flex; gap:18px; font-family:var(--fmono); font-size:.76rem; color:var(--muted); align-items:center}
+  .gh-meta .lang::before{content:""; display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--accent); margin-right:7px; vertical-align:middle}
+  .gh-link{align-self:flex-start; margin-top:6px; font-size:.9rem; font-weight:500; color:var(--accent-ink); border-bottom:1px solid var(--accent-soft); padding-bottom:1px}
+  .gh-link:hover{border-color:var(--accent)}
+
+  /* testimonials */
+  .themes{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+  @media(max-width:860px){ .themes{grid-template-columns:repeat(2,1fr)} }
+  @media(max-width:560px){ .themes{grid-template-columns:1fr} }
+  .tcard{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:26px 24px; display:flex; flex-direction:column}
+  .tcard .th{display:flex; align-items:center; gap:11px; margin-bottom:16px}
+  .tcard .th svg{width:18px; height:18px; color:var(--accent)}
+  .tcard .th h3{font-size:1.02rem; letter-spacing:-.005em}
+  .tcard blockquote{margin:0; font-size:.98rem; color:var(--ink-soft); line-height:1.58; font-style:italic}
+  .tcard .who{margin-top:16px; padding-top:14px; border-top:1px solid var(--line); font-size:.82rem; color:var(--muted)}
+
+  .partners{margin-top:22px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+  @media(max-width:700px){ .partners{grid-template-columns:1fr} }
+  .pcard{background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:var(--r-sm); padding:22px 24px}
+  .pcard blockquote{margin:0; font-size:1rem; color:var(--ink); line-height:1.55}
+  .pcard .who{margin-top:14px; font-family:var(--fmono); font-size:.78rem; color:var(--muted)}
+
+  .note{margin-top:28px; font-size:.86rem; color:var(--muted); background:var(--surface-2); border:1px dashed var(--line-strong); border-radius:var(--r-sm); padding:14px 18px; max-width:70ch}
+  .note b{color:var(--ink-soft); font-weight:600}
+
+  /* contact */
+  .contact{background:var(--surface); border-top:1px solid var(--line)}
+  .contact-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:end}
+  @media(max-width:760px){ .contact-grid{grid-template-columns:1fr; gap:28px} }
+  .contact h2{font-size:clamp(1.8rem,3.4vw,2.6rem); max-width:16ch}
+  .contact p{margin-top:16px; color:var(--ink-soft); max-width:46ch}
+  .clinks{display:flex; flex-direction:column; gap:2px}
+  .clinks a{display:flex; align-items:center; justify-content:space-between; gap:18px; padding:16px 2px; border-bottom:1px solid var(--line); font-weight:500; transition:padding-left .16s, color .16s}
+  .clinks a:hover{padding-left:10px; color:var(--accent-ink)}
+  .clinks a .h{font-family:var(--fmono); font-size:.76rem; color:var(--muted); font-weight:400}
+  .clinks a svg{width:17px;height:17px;opacity:.5}
+
+  footer.foot{border-top:1px solid var(--line); background:var(--surface)}
+  .foot-inner{display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:center; padding-block:28px; font-size:.84rem; color:var(--muted)}
+  .foot-inner .mono-s{font-family:var(--fmono)}
+
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Home">
+      <span class="mono" aria-hidden="true">LS</span>
+      <span class="bt"><b>Padmalatha Somashiandan</b><i>Senior Content Developer · Microsoft</i></span>
+    </a>
+    <nav class="links">
+      <a href="#expertise">Expertise</a>
+      <a href="#flagship">Flagship</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#recognition">Recognition</a>
+      <a href="#contact" class="btn btn-ghost nav-cta" style="display:inline-flex">Contact</a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme" title="Toggle theme">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="avail"><span class="d" aria-hidden="true"></span>Open to TPM, PM &amp; content roles — available immediately</span>
+      <h1>I turn the hardest parts of high-performance computing into <em>clarity people can build on.</em></h1>
+      <p class="lede">Senior Content Developer at Microsoft, leading cross-team programs across the HPC and AI infrastructure org — the Well-Architected reliability guide, the CAMP PM-enablement model, and AI-assisted quality operations. Twenty years pairing deep infrastructure fluency with the rigor to scope, sequence, and land complex, multi-team work.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#flagship">Explore my work</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/padmalathasomashiandan" target="_blank" rel="noopener">Connect on LinkedIn</a>
+      </div>
+      <div class="signals">
+        <p class="lbl">Built content and quality systems at</p>
+        <div class="row">
+          <span>Microsoft</span><span>Wipro</span><span>NetApp</span><span>NVIDIA</span><span>Sun Microsystems</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="fabric" aria-hidden="true">
+      <svg viewBox="0 0 400 400" role="img">
+        <!-- tier labels -->
+        <text class="tierlbl" x="8" y="60">core</text>
+        <text class="tierlbl" x="8" y="170">spine</text>
+        <text class="tierlbl" x="8" y="280">leaf</text>
+        <text class="tierlbl" x="8" y="390">compute</text>
+        <!-- links core<->spine -->
+        <g class="link">
+          <line x1="140" y1="55" x2="80" y2="165"/><line x1="140" y1="55" x2="200" y2="165"/><line x1="140" y1="55" x2="320" y2="165"/>
+          <line x1="260" y1="55" x2="80" y2="165"/><line x1="260" y1="55" x2="200" y2="165"/><line x1="260" y1="55" x2="320" y2="165"/>
+        </g>
+        <!-- links spine<->leaf -->
+        <g class="link hot">
+          <line x1="80" y1="165" x2="70" y2="275"/><line x1="80" y1="165" x2="200" y2="275"/>
+          <line x1="200" y1="165" x2="70" y2="275"/><line x1="200" y1="165" x2="200" y2="275"/><line x1="200" y1="165" x2="330" y2="275"/>
+          <line x1="320" y1="165" x2="200" y2="275"/><line x1="320" y1="165" x2="330" y2="275"/>
+        </g>
+        <!-- links leaf<->compute -->
+        <g class="link">
+          <line x1="70" y1="275" x2="48" y2="368"/><line x1="70" y1="275" x2="92" y2="368"/>
+          <line x1="200" y1="275" x2="178" y2="368"/><line x1="200" y1="275" x2="222" y2="368"/>
+          <line x1="330" y1="275" x2="308" y2="368"/><line x1="330" y1="275" x2="352" y2="368"/>
+        </g>
+        <!-- nodes -->
+        <g>
+          <circle class="node core" cx="140" cy="55" r="12"/><circle class="node core" cx="260" cy="55" r="12"/>
+          <circle class="node" cx="80" cy="165" r="11"/><circle class="node" cx="200" cy="165" r="11"/><circle class="node" cx="320" cy="165" r="11"/>
+          <circle class="node leaf" cx="70" cy="275" r="10"/><circle class="node leaf" cx="200" cy="275" r="10"/><circle class="node leaf" cx="330" cy="275" r="10"/>
+          <rect class="node" x="40" y="360" width="16" height="16" rx="3"/><rect class="node" x="84" y="360" width="16" height="16" rx="3"/>
+          <rect class="node" x="170" y="360" width="16" height="16" rx="3"/><rect class="node" x="214" y="360" width="16" height="16" rx="3"/>
+          <rect class="node" x="300" y="360" width="16" height="16" rx="3"/><rect class="node" x="344" y="360" width="16" height="16" rx="3"/>
+        </g>
+        <circle class="pulse" cx="200" cy="165" r="4"><animate attributeName="opacity" values="1;.15;1" dur="2.6s" repeatCount="indefinite"/></circle>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact" style="padding-block:clamp(48px,7vw,80px)">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:34px">
+      <p class="sec-tag">Impact in numbers</p>
+      <h2>Measured outcomes, not just pages shipped</h2>
+      <p>A selection of results from Microsoft review cycles. Freshness and quality scores use different article sets and baselines, so each figure stands on its own.</p>
+    </div>
+    <div class="mgrid">
+      <div class="mcell">
+        <div class="n">35% <b>&#x2192;</b> 88%</div>
+        <div class="k">CycleCloud content quality &amp; freshness, lifted in a single semester with AI-assisted editing</div>
+        <div class="src">FY26 H1</div>
+      </div>
+      <div class="mcell">
+        <div class="n"><b>~40%</b> faster</div>
+        <div class="k">Documentation review cycles across 30+ pages, via AI-assisted review (Content Mentor)</div>
+        <div class="src">FY26 H2</div>
+      </div>
+      <div class="mcell">
+        <div class="n">96.50%</div>
+        <div class="k">Content quality score across a 312-topic Azure Batch &amp; CycleCloud portfolio — 100% defect-free</div>
+        <div class="src">August 2026</div>
+      </div>
+      <div class="mcell">
+        <div class="n"><b>90%</b> fewer</div>
+        <div class="k">Internal-team PRs to the public docs repo, through contributor gatekeeping</div>
+        <div class="src">FY25</div>
+      </div>
+      <div class="mcell">
+        <div class="n">50% <span style="font-size:.6em">of PMs</span></div>
+        <div class="k">Now author content independently through the CAMP enablement model I built</div>
+        <div class="src">FY25</div>
+      </div>
+      <div class="mcell">
+        <div class="n">Zero</div>
+        <div class="k">Security vulnerabilities shipped in released docs, through SFI Wave 4 gatekeeping</div>
+        <div class="src">FY25</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-tag">What I do</p>
+      <h2>Six areas where I make complex infrastructure usable</h2>
+      <p>From deep reference content to executive-ready guidance, my work connects the engineering reality of HPC and AI systems to the people who have to evaluate, build, and run them.</p>
+    </div>
+    <div class="exp">
+      <article>
+        <div class="idx">01</div>
+        <h3>HPC Documentation</h3>
+        <p>Reference and conceptual content for the full Azure HPC stack, grounded in how the systems actually behave in production.</p>
+        <div class="stack"><span class="chip">CycleCloud</span><span class="chip">Slurm</span><span class="chip">GPU VMs</span><span class="chip">InfiniBand</span><span class="chip">Open OnDemand</span><span class="chip">Prometheus / Grafana</span></div>
+      </article>
+      <article>
+        <div class="idx">02</div>
+        <h3>Well-Architected &amp; Reliability</h3>
+        <p>Service-neutral design guidance across the five pillars — criticality tiers, failure-mode analysis, and recovery targets for HPC workloads.</p>
+        <div class="stack"><span class="chip">WAF</span><span class="chip">Resiliency</span><span class="chip">Multi-region</span></div>
+      </article>
+      <article>
+        <div class="idx">03</div>
+        <h3>Content Strategy &amp; IA</h3>
+        <p>Information architectures mapped to how people learn — organised by customer journey and by user persona, not by product org chart.</p>
+        <div class="stack"><span class="chip">Journey mapping</span><span class="chip">Personas</span><span class="chip">YamlMime Hubs</span></div>
+      </article>
+      <article>
+        <div class="idx">04</div>
+        <h3>AI-Augmented Documentation</h3>
+        <p>AI-native workflows and knowledge systems that raise quality and scale, built by someone who understands both the content and the models.</p>
+        <div class="stack"><span class="chip">Copilot</span><span class="chip">Knowledge bases</span><span class="chip">Automation</span></div>
+      </article>
+      <article>
+        <div class="idx">05</div>
+        <h3>PM Enablement</h3>
+        <p>Built and scaled the CAMP model across every Storage and HPC PM — getting 50% of them authoring content independently and running regular PM content hours.</p>
+        <div class="stack"><span class="chip">CAMP Counselor</span><span class="chip">PM content hours</span><span class="chip">Copilot Expert</span></div>
+      </article>
+      <article>
+        <div class="idx">06</div>
+        <h3>Discoverability &amp; Impact</h3>
+        <p>SEO and measurement that turn good content into found content, with dashboards that tie documentation to real business outcomes.</p>
+        <div class="stack"><span class="chip">Technical SEO</span><span class="chip">Analytics</span><span class="chip">Quality metrics</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FLAGSHIP -->
+<section id="flagship">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-tag">Flagship project</p>
+      <h2>The Well-Architected Framework service guide for HPC</h2>
+      <p>A service-neutral reliability and design guide for high-performance computing workloads on Microsoft Learn — authored and delivered end to end.</p>
+    </div>
+    <div class="spotlight">
+      <div class="spot-grid">
+        <div class="spot-main">
+          <span class="spot-flag">Krypton semester spotlight · authored end to end</span>
+          <h3>The first guide bridging HPC deployment decisions to the WAF pillars</h3>
+          <p>HPC customers had no reference connecting deployment choices to the Azure Well-Architected Framework&#x2019;s reliability, performance, and cost pillars. I authored one — service-neutral, so architects get a consistent way to reason about reliability no matter how their cluster is assembled.</p>
+          <ul class="spot-points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>A reliability model built on criticality tiers, failure-mode analysis, and defined recovery targets.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Multi-region cluster deployment and performance-tuning guidance, shaped by customer capacity feedback.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>HPC-specific decision trees and structured workload reference tables for fast evaluation.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Resolved a top-3 customer escalation theme and sped time-to-value across three key scenarios.</span></li>
+          </ul>
+          <blockquote style="margin:28px 0 0; padding:18px 22px; background:var(--surface-2); border-left:3px solid var(--accent); border-radius:var(--r-sm); font-size:1.02rem; color:var(--ink); line-height:1.5">&#x201C;The WAF guide stands out as a strategic asset, not just a content deliverable.&#x201D;<span style="display:block; margin-top:10px; font-family:var(--fmono); font-size:.76rem; color:var(--muted)">Manager, Krypton semester review</span></blockquote>
+        </div>
+        <div class="spot-side">
+          <div class="metric"><div class="n">Spotlight</div><div class="k">Selected as the semester&#x2019;s spotlight project — authored and delivered end to end</div></div>
+          <div class="metric"><div class="n">In production</div><div class="k">Referenced in PM-led customer engagements across the org</div></div>
+          <div class="metric"><div class="n">5 pillars</div><div class="k">Reliability, security, cost, operations, and performance — covered service-neutrally</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-tag">Selected work</p>
+      <h2>A sample of what I&#x2019;ve shipped</h2>
+    </div>
+    <div class="work">
+      <a class="row" href="#contact">
+        <span class="wn">01</span>
+        <span class="wt">CAMP PM-enablement model<small>Built and scaled a program onboarding every Storage and HPC PM, plus TPMs and STAs — with a self-start kit, templates, and PM content hours. 50% of PMs now author independently; internal public-repo PRs fell 90%.</small></span>
+        <span class="wtag">PM enablement</span>
+      </a>
+      <a class="row" href="#contact">
+        <span class="wn">02</span>
+        <span class="wt">HPC performance &amp; benchmarking guidance<small>Authored performance comparison and tuning guidance so customers can benchmark across HPC VM series and configurations and tune clusters for throughput — closely tied to the multi-region deployment work.</small></span>
+        <span class="wtag">Performance</span>
+      </a>
+      <a class="row" href="#contact">
+        <span class="wn">03</span>
+        <span class="wt">CycleCloud monitoring modernization<small>Documented the modernized Prometheus, Grafana, and Microsoft Entra ID SSO monitoring stack in CycleCloud, retiring legacy Telegraf-based tooling and coordinating the migration.</small></span>
+        <span class="wtag">Observability</span>
+      </a>
+      <a class="row" href="#contact">
+        <span class="wn">04</span>
+        <span class="wt">Signal-to-delivery triage pipeline<small>Built and operate a weighted decision-matrix framework that triages community-sourced technical signal into prioritised work, and presented the framework and recommendations to stakeholders.</small></span>
+        <span class="wtag">Program ops</span>
+      </a>
+      <a class="row" href="#contact">
+        <span class="wn">05</span>
+        <span class="wt">CycleCloud Workspace for Slurm, GA<small>Rebuilt the entire CCWS documentation set for general availability after a CELA audit, and documented Slurm cloud bursting — simplifying cluster deployment for HPC and AI workloads.</small></span>
+        <span class="wtag">Product launch</span>
+      </a>
+      <a class="row" href="#contact">
+        <span class="wn">06</span>
+        <span class="wt">AI-assisted review &amp; content automation<small>Introduced Content Mentor for AI-assisted review across 30+ pages and automated CycleCloud standardization — lifting freshness from 35% to 88%. Now being evaluated by adjacent content areas.</small></span>
+        <span class="wtag">AI &amp; automation</span>
+      </a>
+      <a class="row" href="#contact">
+        <span class="wn">07</span>
+        <span class="wt">HPC Lift-and-Shift cloud migration guide<small>Authored a strategic architecture and best-practices reference for moving HPC workloads to Azure, verified by customers and partners.</small></span>
+        <span class="wtag">Strategic guide</span>
+      </a>
+      <a class="row" href="#contact">
+        <span class="wn">08</span>
+        <span class="wt">Azure HPC Learn hub redesign<small>Rebuilt the HPC learning hub two ways — by customer journey (Evaluate → Build → Train → Deploy → Optimise) and by user persona — with interactive previews for side-by-side comparison.</small></span>
+        <span class="wtag">Content strategy</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB -->
+<section id="github" style="background:var(--surface-2); border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-tag">Open source &amp; GitHub</p>
+      <h2>Code, hackathons, and docs-as-code</h2>
+      <p>I don&#x2019;t just write about systems — I work in them. My documentation runs on docs-as-code, and I build small tools that make it more reliable, including Hackathon projects and AI companions for PMs.</p>
+    </div>
+    <div class="gh">
+      <div class="gh-card lead">
+        <div class="gh-top">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.47.11-3.05 0 0 .97-.31 3.2 1.18a11 11 0 0 1 5.82 0c2.22-1.5 3.19-1.18 3.19-1.18.63 1.58.23 2.75.11 3.04.75.82 1.2 1.85 1.2 3.11 0 4.43-2.7 5.4-5.28 5.69.42.36.79 1.07.79 2.16v3.2c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+          <span class="repo">Padmalathas/doc-sample-drift-check</span>
+        </div>
+        <h3>Doc Sample Drift Check</h3>
+        <p>A Microsoft Hackathon 2026 project that catches when code samples in documentation drift out of sync with the APIs they describe — closing a quiet but costly gap in docs quality.</p>
+        <div class="gh-meta"><span class="lang">Automation</span><span>Hackathon 2026</span></div>
+        <a class="gh-link" href="https://github.com/Padmalathas" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+      <div class="gh-card">
+        <div class="gh-top">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.47.11-3.05 0 0 .97-.31 3.2 1.18a11 11 0 0 1 5.82 0c2.22-1.5 3.19-1.18 3.19-1.18.63 1.58.23 2.75.11 3.04.75.82 1.2 1.85 1.2 3.11 0 4.43-2.7 5.4-5.28 5.69.42.36.79 1.07.79 2.16v3.2c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+          <span class="repo">Padmalathas</span>
+        </div>
+        <h3>Docs-as-code footprint</h3>
+        <p>Day-to-day work in Markdown, GitHub PRs, issues, and reviews across Azure documentation — including a recent quarter of 9 merged PRs across 5 repositories, plus AI companion tools that help PMs complete GitHub tasks.</p>
+        <div class="gh-meta"><span class="lang">Markdown · Python · Bash</span></div>
+        <a class="gh-link" href="https://github.com/Padmalathas" target="_blank" rel="noopener">See my GitHub profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background:var(--surface-2); border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-tag">Experience</p>
+      <h2>Twenty years of landing complex, multi-team work</h2>
+      <p>A through-line from enterprise QA leadership to Azure HPC — scoping, sequencing, and shipping technical programs across engineering, PM, and content.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl">
+        <div class="tl-when">Jun 2022 – Present</div>
+        <div class="tl-what">
+          <h3>Microsoft — Senior Content Developer, Azure HPC &amp; AI Infrastructure</h3>
+          <p>Promoted to Senior in 2026. Run the technical program for Azure HPC and AI infrastructure documentation across engineering, PM, and content. Led the WAF service guide, CAMP enablement, monitoring modernization, and launch readiness — HBv4/HX on AMD partnership day, HBv5 timed to the NVIDIA release, and CycleCloud Workspace for Slurm GA. Zero security vulnerabilities through SFI Wave 4 gatekeeping; owns a 312-topic portfolio at 96.5% quality.</p>
+        </div>
+      </div>
+      <div class="tl">
+        <div class="tl-when">Aug 2015 – Jun 2022</div>
+        <div class="tl-what">
+          <h3>Wipro Technologies — Senior Technical Writer (client-facing, multi-domain)</h3>
+          <p>Ran an FDA-regulated documentation program for dialysis systems — authoring Operational Qualification scripts in Camstar and carrying them through IQ/PQ to production. Owned NetApp ONTAP&#x2019;s docs program with Perl manpage automation and Word-to-DITA tooling, and led the Mitel/ShoreTel rebrand content migration in MadCap Flare.</p>
+        </div>
+      </div>
+      <div class="tl">
+        <div class="tl-when">2007 – 2015</div>
+        <div class="tl-what">
+          <h3>QA leadership &amp; technical writing — Trianz, Photon Infotech, BMC Software, GE Healthcare</h3>
+          <p>Quality engineering and documentation roles across enterprise clients: Python traffic generators for VeriSign, a critical database-migration defect caught before release at BMC, QA management at Photon, and manuals localised into 23 languages at GE Healthcare.</p>
+        </div>
+      </div>
+      <div class="tl">
+        <div class="tl-when">2000 – 2007</div>
+        <div class="tl-what">
+          <h3>Sun Microsystems — Host QA Manager</h3>
+          <p>Led QA for Sun Management Center, Sun&#x2019;s enterprise system-monitoring platform, on Solaris. Review lead on the full rewrite of user manuals for three flagship releases, and a three-time QA contribution award winner.</p>
+        </div>
+      </div>
+    </div>
+    <div class="eduline">
+      <div><span class="k">Education</span>B.E., Telecommunication — Bangalore University</div>
+      <div><span class="k">Certification</span>DevOps Professional Foundation (Wipro)</div>
+      <div><span class="k">Community</span>Volunteer Lead, Women of Azure Core (SVC board)</div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section id="recognition">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-tag">Recognition</p>
+      <h2>What colleagues and partners say</h2>
+      <p>Peer feedback from across engineering, PM, and content, gathered during Microsoft review cycles, consistently clusters around six themes.</p>
+    </div>
+    <div class="themes">
+      <div class="tcard">
+        <div class="th"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><h3>Strategic Vision</h3></div>
+        <blockquote>&#x201C;You have a great grasp of the big picture of content — not just the doc you&#x2019;re working on, but how it connects to the rest and fulfils a customer need.&#x201D;</blockquote>
+        <div class="who">Content Partner</div>
+      </div>
+      <div class="tcard">
+        <div class="th"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/></svg><h3>Technical Depth</h3></div>
+        <blockquote>&#x201C;Your deep expertise in high-performance computing was evident in every aspect of the content — complex HPC concepts translated into clear, actionable guidance.&#x201D;</blockquote>
+        <div class="who">Well-Architected Framework partner</div>
+      </div>
+      <div class="tcard">
+        <div class="th"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><h3>Ownership</h3></div>
+        <blockquote>&#x201C;You took full ownership from the very beginning — iterating many times to refine the content, addressing every piece of feedback, and maintaining high editorial standards.&#x201D;</blockquote>
+        <div class="who">Well-Architected Framework</div>
+      </div>
+      <div class="tcard">
+        <div class="th"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0 .01M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><h3>Cross-Team Collaboration</h3></div>
+        <blockquote>&#x201C;Your collaboration style makes even difficult work feel productive and approachable — consistently thoughtful and clear, especially when navigating ambiguity.&#x201D;</blockquote>
+        <div class="who">Engineering Partner</div>
+      </div>
+      <div class="tcard">
+        <div class="th"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg><h3>Reliability</h3></div>
+        <blockquote>&#x201C;You are very meticulous and very organized. With Latha at the helm, we can rest assured the content is kept refreshed and up to date.&#x201D;</blockquote>
+        <div class="who">Program Manager, HPC</div>
+      </div>
+      <div class="tcard">
+        <div class="th"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21 8 14 2 9.4h7.6Z"/></svg><h3>Leadership &amp; Community</h3></div>
+        <blockquote>&#x201C;You consistently lead with ownership and proactive coordination in community initiatives, particularly as Volunteer Lead on the Women of Azure Core board.&#x201D;</blockquote>
+        <div class="who">Cross-Functional Partner</div>
+      </div>
+    </div>
+
+    <div style="margin-top:56px" class="sec-head">
+      <p class="sec-tag">Awards &amp; appreciations</p>
+      <h2>Partner recognition</h2>
+    </div>
+    <div class="partners">
+      <div class="pcard">
+        <blockquote>&#x201C;The PM content hours you run has been very helpful — you&#x2019;ve gone beyond and helped close critical work items, even when it meant stretching beyond your regular hours.&#x201D;</blockquote>
+        <div class="who">Program Manager · HPC Documentation</div>
+      </div>
+      <div class="pcard">
+        <blockquote>&#x201C;You are one of the few employees who received a significant number of perspectives.&#x201D;</blockquote>
+        <div class="who">Manager · Krypton semester review</div>
+      </div>
+      <div class="pcard">
+        <blockquote>Winner, Azure Cloud-Native Org Logo Contest 2026 — &#x201C;Vela,&#x201D; a nautical, constellation-inspired identity chosen by org leadership to represent the organisation.</blockquote>
+        <div class="who">Azure Cloud-Native · 2026</div>
+      </div>
+      <div class="pcard">
+        <blockquote>GitHub Copilot Expert — recognised for delivering Garage Learn enablement sessions supporting Copilot certification prep.</blockquote>
+        <div class="who">GitHub Copilot · Enablement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <h2>Let&#x2019;s build something that scales.</h2>
+      <p>Open to Technical Program Manager, Product Manager, and content roles — and available to start immediately. Happy to talk about HPC and AI infrastructure, documentation strategy, and PM enablement.</p>
+    </div>
+    <div class="clinks">
+      <a href="https://www.linkedin.com/in/padmalathasomashiandan" target="_blank" rel="noopener">
+        <span><span class="h">LinkedIn</span><br>in/padmalathasomashiandan</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+      <a href="https://github.com/Padmalathas" target="_blank" rel="noopener">
+        <span><span class="h">GitHub</span><br>github.com/Padmalathas</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+      <a href="mailto:spadmalatha@gmail.com">
+        <span><span class="h">Email</span><br>spadmalatha@gmail.com</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <span>© <span id="yr"></span> Padmalatha Somashiandan</span>
+    <span class="mono-s">Senior Content Developer · California, US</span>
+  </div>
+</footer>
+
+<script>
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // theme toggle (respects system by default, remembers choice)
+  (function(){
+    var root = document.documentElement, btn = document.getElementById('themeBtn');
+    var sun = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+    var moon = '<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/>';
+    var icon = document.getElementById('themeIcon');
+    function sysDark(){ return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; }
+    function current(){ return root.getAttribute('data-theme') || (sysDark() ? 'dark' : 'light'); }
+    function paint(){ icon.innerHTML = current() === 'dark' ? moon : sun; }
+    try{ var saved = localStorage.getItem('ls-theme'); if(saved){ root.setAttribute('data-theme', saved); } }catch(e){}
+    paint();
+    btn.addEventListener('click', function(){
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try{ localStorage.setItem('ls-theme', next); }catch(e){}
+      paint();
+    });
+  })();
+</script>
+</body>
+</html>
