@@ -182,6 +182,46 @@
   .eduline div{font-size:.93rem; color:var(--ink-soft)}
   .eduline .k{font-family:var(--fmono); font-size:.72rem; color:var(--muted); display:block; margin-bottom:3px}
 
+  /* samples & credentials */
+  .sample{display:grid; grid-template-columns:1.05fr .95fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r); overflow:hidden; margin-bottom:34px}
+  @media(max-width:760px){ .sample{grid-template-columns:1fr} }
+  .sample-body{background:var(--surface); padding:clamp(26px,3.5vw,40px)}
+  .sample-body .tag{font-family:var(--fmono); font-size:.76rem; color:var(--accent-ink); margin-bottom:16px}
+  .sample-body h3{font-size:1.3rem; letter-spacing:-.01em; margin-bottom:12px}
+  .sample-body p{color:var(--ink-soft); font-size:1rem; max-width:50ch}
+  .sample-body .meta{margin-top:16px; font-family:var(--fmono); font-size:.76rem; color:var(--muted)}
+  .sample-body .view{display:inline-flex; align-items:center; gap:8px; margin-top:22px; font-weight:500; font-size:.95rem; color:var(--accent-ink); border:1px solid var(--line-strong); border-radius:var(--r-sm); padding:10px 18px; transition:border-color .15s, color .15s}
+  .sample-body .view:hover{border-color:var(--accent)}
+  .sample-body .view svg{width:16px; height:16px}
+  .sample-visual{background:var(--surface-2); display:grid; place-items:center; padding:28px; position:relative}
+  .sample-visual .doc{width:100%; max-width:230px; aspect-ratio:3/4; background:var(--surface); border:1px solid var(--line); border-radius:8px; box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column}
+  .sample-visual .doc .bar{height:34%; background:linear-gradient(135deg,#17365D,#245991); display:flex; align-items:flex-end; padding:14px}
+  .sample-visual .doc .bar span{font-family:var(--fdisplay); font-weight:600; color:#fff; font-size:.82rem; line-height:1.15}
+  .sample-visual .doc .lines{flex:1; padding:14px; display:flex; flex-direction:column; gap:7px}
+  .sample-visual .doc .lines i{display:block; height:5px; border-radius:3px; background:var(--line)}
+  .sample-visual .doc .lines i:nth-child(3n){background:var(--accent-soft)}
+
+  .creds{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:34px}
+  @media(max-width:640px){ .creds{grid-template-columns:1fr} }
+  .cred{display:flex; align-items:center; gap:16px; background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:20px 22px}
+  .cred .ic{width:42px; height:42px; border-radius:10px; flex:none; display:grid; place-items:center; background:var(--accent-soft); color:var(--accent-ink)}
+  .cred .ic svg{width:20px; height:20px}
+  .cred .txt{flex:1; min-width:0}
+  .cred .txt h4{font-family:var(--fdisplay); font-weight:600; font-size:1rem; letter-spacing:-.01em; margin:0 0 3px}
+  .cred .txt p{font-size:.84rem; color:var(--muted); font-family:var(--fmono)}
+  .cred .go{flex:none; color:var(--muted); transition:color .15s}
+  .cred:hover .go{color:var(--accent-ink)}
+  .cred .go svg{width:16px; height:16px}
+
+  .earlier{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:clamp(24px,3vw,34px)}
+  .earlier h3{font-size:1.1rem; letter-spacing:-.01em; margin-bottom:6px}
+  .earlier > p{color:var(--muted); font-size:.9rem; margin-bottom:22px}
+  .earlier ul{list-style:none; margin:0; padding:0; display:grid; gap:18px}
+  .earlier li{display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:baseline}
+  .earlier li .yr{font-family:var(--fmono); font-size:.74rem; color:var(--accent-ink); white-space:nowrap}
+  .earlier li b{font-weight:600; color:var(--ink)}
+  .earlier li span.d{color:var(--ink-soft); font-size:.97rem}
+
   /* github */
   .gh{display:grid; grid-template-columns:1fr 1fr; gap:22px}
   @media(max-width:760px){ .gh{grid-template-columns:1fr} }
@@ -573,6 +613,59 @@
   </div>
 </section>
 
+<!-- SAMPLES & CREDENTIALS -->
+<section id="samples">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-tag">Writing samples &amp; credentials</p>
+      <h2>Published work and foundations</h2>
+      <p>A sample of published documentation, formal credentials, and earlier client initiatives that built the foundation for the work above.</p>
+    </div>
+
+    <div class="sample">
+      <div class="sample-body">
+        <p class="tag">Writing sample</p>
+        <h3>Connect Client Quick Reference Guide</h3>
+        <p>A task-oriented visual quick-reference guide for Mitel&#x2019;s unified-communications client — distilling calling, conferencing, screen share, IM, and extension setup into a single scannable page. A study in making dense software approachable at a glance.</p>
+        <div class="meta">Mitel · end-user product documentation</div>
+        <a class="view" href="assets/mitel-connect-quick-reference-guide.pdf" target="_blank" rel="noopener">
+          View sample (PDF)
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+      </div>
+      <div class="sample-visual" aria-hidden="true">
+        <div class="doc">
+          <div class="bar"><span>Connect Client<br>Quick Reference</span></div>
+          <div class="lines"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="creds">
+      <a class="cred" href="assets/twb-technical-writing-2015.pdf" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg></span>
+        <span class="txt"><h4>Technical Writing — Fundamental Certification</h4><p>The Writers Block (TWB) · 2015</p></span>
+        <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      </a>
+      <a class="cred" href="assets/iiht-xml-dita-2017.pdf" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg></span>
+        <span class="txt"><h4>XML-DITA</h4><p>IIHT · 2017</p></span>
+        <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      </a>
+    </div>
+
+    <div class="earlier">
+      <h3>Earlier client initiatives</h3>
+      <p>Client work from the Wipro years — described rather than linked, as the source documents are client-internal.</p>
+      <ul>
+        <li><span class="yr">Medical devices</span><span class="d">Designed and documented a reusable HTML/JS framework that generated self-service workflow flowcharts from a manufacturing execution system, so teams could run training and audits without logging into the source software — authored the enablement guide so others could extend it.</span></li>
+        <li><span class="yr">Semiconductor</span><span class="d">Authored a change-management and CAB process for a hardware client&#x2019;s production environment — risk classification, approval workflows, blast-radius and SLO-impact assessment, and rollback and revert planning.</span></li>
+        <li><span class="yr">Semiconductor</span><span class="d">Documented a Python log-parsing CLI for vendor test logs run on an HPC scheduler (LSF), including setup, job submission, and data interpretation.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- RECOGNITION -->
 <section id="recognition">
   <div class="wrap">
@@ -584,8 +677,8 @@
     <div class="themes">
       <div class="tcard">
         <div class="th"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><h3>Strategic Vision</h3></div>
-        <blockquote>&#x201C;You have a great grasp of the big picture of content — not just the doc you&#x2019;re working on, but how it connects to the rest and fulfils a customer need.&#x201D;</blockquote>
-        <div class="who">Content Partner</div>
+        <blockquote>&#x201C;You frame your area relative to the broader Azure experience and identify what you can be accountable for. You engage partner teams both to understand what needs to be done and to get them taking action.&#x201D;</blockquote>
+        <div class="who">Manager, Content Engineering</div>
       </div>
       <div class="tcard">
         <div class="th"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/></svg><h3>Technical Depth</h3></div>
@@ -594,22 +687,22 @@
       </div>
       <div class="tcard">
         <div class="th"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><h3>Ownership</h3></div>
-        <blockquote>&#x201C;You took full ownership from the very beginning — iterating many times to refine the content, addressing every piece of feedback, and maintaining high editorial standards.&#x201D;</blockquote>
-        <div class="who">Well-Architected Framework</div>
+        <blockquote>&#x201C;You always keep ahead on your tasks. Never did it seem like anyone was &#x2018;waiting on&#x2019; you to deliver your component. For as many moving parts as this migration had, that was impressive.&#x201D;</blockquote>
+        <div class="who">Content Lead, Azure Architecture Center</div>
       </div>
       <div class="tcard">
         <div class="th"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0 .01M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><h3>Cross-Team Collaboration</h3></div>
-        <blockquote>&#x201C;Your collaboration style makes even difficult work feel productive and approachable — consistently thoughtful and clear, especially when navigating ambiguity.&#x201D;</blockquote>
-        <div class="who">Engineering Partner</div>
+        <blockquote>&#x201C;You&#x2019;ve stepped in to help me work more efficiently with my product PMs — open and honest, both when discussing challenges and setting expectations with my PM teams.&#x201D;</blockquote>
+        <div class="who">Content Partner, Storage Products</div>
       </div>
       <div class="tcard">
         <div class="th"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg><h3>Reliability</h3></div>
-        <blockquote>&#x201C;You are very meticulous and very organized. With Latha at the helm, we can rest assured the content is kept refreshed and up to date.&#x201D;</blockquote>
-        <div class="who">Program Manager, HPC</div>
+        <blockquote>&#x201C;What I value most is your reliability and responsiveness. You balance your work well across multiple deliverables and communicate project status clearly.&#x201D;</blockquote>
+        <div class="who">Content Mentor &amp; Reviewer</div>
       </div>
       <div class="tcard">
-        <div class="th"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21 8 14 2 9.4h7.6Z"/></svg><h3>Leadership &amp; Community</h3></div>
-        <blockquote>&#x201C;You consistently lead with ownership and proactive coordination in community initiatives, particularly as Volunteer Lead on the Women of Azure Core board.&#x201D;</blockquote>
+        <div class="th"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10M12 3v18M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg><h3>Judgment &amp; Risk</h3></div>
+        <blockquote>&#x201C;You bring thoughtful technical judgment and risk awareness to ambiguous, cross-functional initiatives. This grounded realism kept the effort viable and focused on incremental improvement over fragile perfection.&#x201D;</blockquote>
         <div class="who">Cross-Functional Partner</div>
       </div>
     </div>
